@@ -3,34 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Câmara Fria</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-    #grafico-container {
-      width: 90%;
-      max-width: 800px;
-      height: 400px;
-    }
-    #motor-status {
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
-  </style>
+  <title>Simulação de Câmara Fria</title>
+  <link rel="stylesheet" href="/src/assets/reset.css">
+  <link rel="stylesheet" href="/src/assets/styles.css">
 </head>
 <body>
-  <h1>Câmara Fria - Controle de Temperatura</h1>
-  <div id="grafico-container">
-    <canvas id="grafico"></canvas>
-  </div>
-  <div id="motor-status">Motor: Desligado</div>
-  <script type="module" src="./src/main.ts"></script>
+
+  <script type="module" src="/src/main.ts"></script>
+  
 </body>
 </html>

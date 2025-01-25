@@ -48,15 +48,24 @@ function desligarMotor(): void {
   }
 }
 
-function simularCamara(): void {
-  console.log(`Iniciando simulação com temperatura inicial de ${temperaturaAtual}°C.`);
-  while (true) {
-    if (motorLigado) {
-      ligarMotor();
-    } else {
-      desligarMotor();
-    }
+export function simularCamara(): void {
+    console.log(`Iniciando simulação com temperatura inicial de ${temperaturaAtual}°C.`);
+    let i = 0;
+  
+    const intervalo = setInterval(() => {
+      if (i >= 100) {
+        clearInterval(intervalo); // Encerra o intervalo quando o loop atinge o limite
+        console.log("Simulação concluída.");
+        return;
+      }
+  
+      if (motorLigado) {
+        ligarMotor();
+      } else {
+        desligarMotor();
+      }
+  
+      i++;
+    }, 1000); // Executa o bloco de código a cada 1 segundo
   }
-}
-
-simularCamara();
+  
