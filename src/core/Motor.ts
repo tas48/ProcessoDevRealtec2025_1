@@ -1,35 +1,35 @@
-import { getTemperaturaAtual, setTemperaturaAtual, getMotorLigado, taxaAquecimento, taxaResfriamento, delay } from "./variables";
+import { Camara } from "./camara";
 import { sensor } from "./sensor";
 
-function delayEfeito(): void {
-  for (let i = 0; i < delay; i++) {
-    if (getMotorLigado()) {
-      setTemperaturaAtual(getTemperaturaAtual() + taxaAquecimento);
+export function delayEfeito(camara: Camara): void {
+  for (let i = 0; i < 5; i++) {
+    if (camara.getMotorLigado()) {
+      camara.setTemperaturaAtual(camara.getTemperaturaAtual() + 1.5);
     } else {
-      setTemperaturaAtual(getTemperaturaAtual() - taxaResfriamento);
+      camara.setTemperaturaAtual(camara.getTemperaturaAtual() - 0.8);
     }
-    console.log(`(Atraso) Minuto ${i + 1}: Temperatura = ${getTemperaturaAtual().toFixed(2)}°C`);
+    console.log(`(Atraso) Minuto ${i + 1}: Temperatura = ${camara.getTemperaturaAtual().toFixed(2)}°C`);
   }
 }
 
-export function ligarMotor(): void {
+export function ligarMotor(camara: Camara): void {
   console.log("Motor LIGADO.");
-  delayEfeito();
+  delayEfeito(camara);
 
-  while (getMotorLigado()) {
-    setTemperaturaAtual(getTemperaturaAtual() - taxaResfriamento);
-    console.log(`Temperatura descendo: ${getTemperaturaAtual().toFixed(2)}°C`);
-    sensor();
+  while (camara.getMotorLigado()) {
+    camara.setTemperaturaAtual(camara.getTemperaturaAtual() - 0.8);
+    console.log(`Temperatura descendo: ${camara.getTemperaturaAtual().toFixed(2)}°C`);
+    sensor(camara);
   }
 }
 
-export function desligarMotor(): void {
+export function desligarMotor(camara: Camara): void {
   console.log("Motor DESLIGADO.");
-  delayEfeito();
+  delayEfeito(camara);
 
-  while (!getMotorLigado()) {
-    setTemperaturaAtual(getTemperaturaAtual() + taxaAquecimento);
-    console.log(`Temperatura subindo: ${getTemperaturaAtual().toFixed(2)}°C`);
-    sensor();
+  while (!camara.getMotorLigado()) {
+    camara.setTemperaturaAtual(camara.getTemperaturaAtual() + 1.5);
+    console.log(`Temperatura subindo: ${camara.getTemperaturaAtual().toFixed(2)}°C`);
+    sensor(camara);
   }
 }

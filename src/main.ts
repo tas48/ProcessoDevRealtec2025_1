@@ -1,3 +1,5 @@
-import { simularCamara } from './core/camara';
+import { simularCamara } from "./core/simulador";
+import { Camara } from "./core/camara";
 
-simularCamara();
+const camara = new Camara(10);
+simularCamara(camara);

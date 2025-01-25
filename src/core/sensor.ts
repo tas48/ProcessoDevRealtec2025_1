@@ -1,13 +1,13 @@
-import { getTemperaturaAtual, getMotorLigado, setMotorLigado, taxaAquecimento, taxaResfriamento } from "./variables";
+import { Camara } from "./camara";
 
-export function sensor(): void {
-  const temperaturaAtual = getTemperaturaAtual();
+export function sensor(camara: Camara): void {
+  const temperaturaAtual = camara.getTemperaturaAtual();
 
-  if (getMotorLigado() && temperaturaAtual - taxaResfriamento <= 4) {
+  if (camara.getMotorLigado() && temperaturaAtual - 0.8 <= 4) {
     console.log("Temperatura atingiu o ponto de desligamento ideal.");
-    setMotorLigado(false);
-  } else if (!getMotorLigado() && temperaturaAtual + taxaAquecimento >= 7.5) {
+    camara.setMotorLigado(false);
+  } else if (!camara.getMotorLigado() && temperaturaAtual + 1.5 >= 7.5) {
     console.log("Temperatura atingiu o ponto de ativação ideal.");
-    setMotorLigado(true);
+    camara.setMotorLigado(true);
   }
 }
