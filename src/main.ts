@@ -1,4 +1,3 @@
-import { simularCamara } from './core/logic';
+import { simularCamara } from './core/camara';
 
 simularCamara();
-  
