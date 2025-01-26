@@ -1,6 +1,8 @@
-# Simulador de Temperatura em Tempo Real
+# Simulador de Câmara Fria
 
-Este projeto em desenvolvimento irá simular o controle de temperatura de uma câmara fria, exibindo os dados de temperatura em tempo real em um gráfico interativo. A temperatura é atualizada a cada segundo, com valores simulados para fins de demonstração.
+Este projeto simula o controle de temperatura de uma câmara fria, exibindo os dados de temperatura em tempo real da simulação em forma de logs, além de em um gráfico que ilustra a variação de temperatura ao longo do tempo.
+
+<img src="./public/tela.png" alt="Tela principal">
 
 ## Tecnologias Utilizadas
 
@@ -8,7 +10,6 @@ Este projeto em desenvolvimento irá simular o controle de temperatura de uma c�
 - **Vite**: Ferramenta de build moderna para facilitar o desenvolvimento com TypeScript.
 - **HMTL E CSS**: Para criação da interface estática.
 - **Chart.js**: Biblioteca para criar gráficos interativos.
-- **chartjs-plugin-streaming**(avaliando sobre): Plugin do Chart.js para permitir a atualização dinâmica de gráficos.
 
 ## Ver o funcionamento(trabalhando ainda)
 Acessando este link: (firebase link here) você conseguirá ver o projeto rodando 
@@ -42,13 +43,7 @@ O projeto estará disponível em **http://localhost:5173** (ou o endereço forne
 
 ### 4. Descrição
 
-
-
-Ao acessar o endereço acima, você verá a aplicação, assim como na imagem abaixo:
-
-<img src="./public/tela.png" alt="Tela principal">
-
-Nesta serão exibido um gráfico de linhas, demonstrando a temperatura ao longo do tempo, assim como um container de logs, onde será repassado passso a passo (minuto a minuto) a simulação da camara fria com a exibição de informações como:
+Nesta aplicação será exibido um gráfico de linhas, demonstrando a temperatura ao longo do tempo, assim como um container de logs, onde será repassado passso a passo (minuto a minuto) a simulação da camara fria com a exibição de informações como:
 
 - Estado do motor: Ligado, Desligado
 - Variação de Temperatura, assinalada com `[ATRASO]` para demonstrar o delay no efeito do motor, assim como assinalada de `[-]` para demonstrar a queda de temperatura e `[+]` para aumento desta.
