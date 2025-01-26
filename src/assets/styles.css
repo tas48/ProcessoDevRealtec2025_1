@@ -60,3 +60,13 @@ body {
 #logTemperatura p.blue {
   color: blue;
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+  height: 45%;
+  margin: 20px auto;
+}

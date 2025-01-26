@@ -1,8 +1,8 @@
+import { Camara } from "../core/Camara";
+
 export function criarLogContainer(): void {
   const logContainer = document.createElement("div");
-  logContainer.id = "logTemperatura"; // A classe CSS será aplicada via id
-
-  // Apenas adiciona o contêiner ao corpo, sem estilização inline
+  logContainer.id = "logTemperatura"; 
   document.body.appendChild(logContainer);
 }
 
@@ -27,6 +27,14 @@ export function adicionarLogNaTela(mensagem: string, cor: string = "black"): voi
   } else {
     console.warn("Contêiner de log não encontrado.");
   }
+}
+
+export function obterTempoTotal(camara: Camara): number | null {
+  const dados = camara.obterDadosTemperatura();
+  if (dados.length === 0) {
+    return null; 
+  }
+  return dados[dados.length - 1].minuto;
 }
 
 

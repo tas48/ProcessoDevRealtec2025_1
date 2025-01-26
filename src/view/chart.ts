@@ -4,23 +4,35 @@ import { Camara } from "../core/Camara";
 export function gerarGraficoTemperatura(camara: Camara): void {
   const dados = camara.obterDadosTemperatura();
 
+    const container = document.createElement('div');
+    container.className = 'container';
+
+    const canvas = document.createElement('canvas');
+    canvas.id = 'graficoTemperatura';
+
+    container.appendChild(canvas);
+    document.body.appendChild(container);
+
   const minutos = dados.map(dado => dado.minuto); // Eixo X: Minutos
   const temperaturas = dados.map(dado => dado.temperatura); // Eixo Y: Temperaturas
+
+  console.log(minutos);
+  console.log(temperaturas);
 
   const ctx = document.getElementById('graficoTemperatura') as HTMLCanvasElement;
 
   if (ctx) {
     new Chart(ctx, {
-      type: 'line', // Tipo de gráfico: linha
+      type: 'line',
       data: {
-        labels: minutos, // Rótulos do eixo X
+        labels: minutos,
         datasets: [{
           label: 'Temperatura (°C)',
-          data: temperaturas, // Dados para o eixo Y
-          borderColor: 'rgba(75, 192, 192, 1)', // Cor da linha
-          backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de fundo da linha
-          fill: true, // Preencher abaixo da linha
-          tension: 0.1 // Suavização da linha
+          data: temperaturas, 
+          borderColor: 'rgba(223, 60, 60, 0.8)',
+          backgroundColor: 'rgba(231, 89, 89, 0.42)', 
+          fill: true,
+          tension: 0.1 
         }]
       },
       options: {

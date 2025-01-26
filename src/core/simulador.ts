@@ -1,6 +1,7 @@
 import { Camara } from "./Camara";
 import { ligarMotor, desligarMotor } from "./motor";
-import { adicionarLogNaTela } from "../view/ui";
+import { adicionarLogNaTela, obterTempoTotal } from "../view/ui";
+import { gerarGraficoTemperatura } from "../view/chart";
 
 export function simularCamara(camara: Camara): void {
   adicionarLogNaTela(`Iniciando simulação com temperatura inicial de ${camara.getTemperaturaAtual()}°C.`);
@@ -10,7 +11,9 @@ export function simularCamara(camara: Camara): void {
     if (i >= 4) {
       clearInterval(intervalo);
       adicionarLogNaTela("Simulação concluída.");
+      adicionarLogNaTela(`Tempo total da simulação: ${obterTempoTotal(camara)} minutos.`);
       console.log(camara.obterDadosTemperatura());
+      gerarGraficoTemperatura(camara)
       return;
     }
 
@@ -20,6 +23,5 @@ export function simularCamara(camara: Camara): void {
       desligarMotor(camara);
     }
     i++;
-  }, 2000); 
+  }, 500); 
 }
-
