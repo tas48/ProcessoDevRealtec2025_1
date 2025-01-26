@@ -11,7 +11,7 @@ export function simularCamara(camara: Camara): void {
     if (i >= 4) {
       clearInterval(intervalo);
       adicionarLogNaTela("Simulação concluída.");
-      adicionarLogNaTela(`Tempo total da simulação: ${obterTempoTotal(camara)} minutos.`);
+      adicionarLogNaTela(`Tempo total da simulação: ${obterTempoTotal(camara)} minutos.`, "green");
       console.log(camara.obterDadosTemperatura());
       gerarGraficoTemperatura(camara)
       return;

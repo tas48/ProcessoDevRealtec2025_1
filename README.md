@@ -40,9 +40,20 @@ npm run dev
 
 O projeto estará disponível em **http://localhost:5173** (ou o endereço fornecido no terminal).
 
-### 4. Verificar a Simulação
+### 4. Descrição
 
-Ao acessar o endereço acima, você verá um gráfico de temperatura atualizando a cada segundos com valores simulados. O gráfico utiliza a biblioteca **Chart.js** e o plugin **chartjs-plugin-streaming** para exibir e atualizar os dados em tempo real.
+
+
+Ao acessar o endereço acima, você verá a aplicação, assim como na imagem abaixo:
+
+<img src="./public/tela.png" alt="Tela principal">
+
+Nesta serão exibido um gráfico de linhas, demonstrando a temperatura ao longo do tempo, assim como um container de logs, onde será repassado passso a passo (minuto a minuto) a simulação da camara fria com a exibição de informações como:
+
+- Estado do motor: Ligado, Desligado
+- Variação de Temperatura, assinalada com `[ATRASO]` para demonstrar o delay no efeito do motor, assim como assinalada de `[-]` para demonstrar a queda de temperatura e `[+]` para aumento desta.
+- Estado do sensor: Função que verifica e calcula o ponto ideial para desligar ou ligar o motor, considerando o tempo de atraso no efeito, assim o limite inferior e superior nunca serão excedidos. Sinalizada por meio de `[SENSOR]` 
+- Tempo total da simulação em minutos.
 
 ## Estrutura do Projeto
 
@@ -50,11 +61,10 @@ Ao acessar o endereço acima, você verá um gráfico de temperatura atualizando
   - **`assets/`**: Contém os arquivos de estilização CSS.
   - **`core/`**: Contém as classes de lógica de controle de temperatura.
   - **`view/`**: Responsável pela interface gráfica.
+    - **`chart.ts`**: Arquivo responsável pelo gráfico usando a lib Chart.js
+    - **`ui.ts`**: Arquivo responsável pelo container com os logs da simulação
   - **`main.ts`**: Arquivo principal para inicializar o aplicativo.
-  - **`main.ts`**: Arquivo de tipagem com as Interfaces a serem ultilizadas, visando garantir melhor organização
-- **`index.html`**: Arquivo HTML com o container para o app.
+- **`index.html`**: Arquivo HTML com o container para o app e alguns elementos.
 
-## Personalização
-Ainda a ser feito 
 
 
