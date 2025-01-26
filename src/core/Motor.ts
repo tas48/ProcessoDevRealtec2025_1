@@ -6,14 +6,14 @@ let tempo = 1;
 
 export function delayEfeito(camara: Camara): void {
   for (let i = 0; i < 5; i++) {
-    sensor(camara, tempo);
-    tempo++;
     if (camara.getMotorLigado()) {
       camara.setTemperaturaAtual(camara.getTemperaturaAtual() + 1.5);
     } else {
       camara.setTemperaturaAtual(camara.getTemperaturaAtual() - 0.8);
     }
     adicionarLogNaTela(`[Atraso] Temperatura = ${camara.getTemperaturaAtual().toFixed(2)}°C`);
+    sensor(camara, tempo);
+    tempo++;
   }
 }
 
