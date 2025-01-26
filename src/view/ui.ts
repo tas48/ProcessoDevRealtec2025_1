@@ -31,4 +31,3 @@ export function adicionarLogNaTela(mensagem: string, cor: string = "black"): voi
 
 
 
-

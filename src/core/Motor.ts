@@ -2,14 +2,18 @@ import { adicionarLogNaTela } from "../view/ui";
 import { Camara } from "./Camara";
 import { sensor } from "./sensor";
 
+let tempo = 1;
+
 export function delayEfeito(camara: Camara): void {
   for (let i = 0; i < 5; i++) {
+    sensor(camara, tempo);
+    tempo++;
     if (camara.getMotorLigado()) {
       camara.setTemperaturaAtual(camara.getTemperaturaAtual() + 1.5);
     } else {
       camara.setTemperaturaAtual(camara.getTemperaturaAtual() - 0.8);
     }
-    adicionarLogNaTela(`[Atraso] Minuto ${i + 1}: Temperatura = ${camara.getTemperaturaAtual().toFixed(2)}°C`);
+    adicionarLogNaTela(`[Atraso] Temperatura = ${camara.getTemperaturaAtual().toFixed(2)}°C`);
   }
 }
 
@@ -20,7 +24,8 @@ export function ligarMotor(camara: Camara): void {
   while (camara.getMotorLigado()) {
     camara.setTemperaturaAtual(camara.getTemperaturaAtual() - 0.8);
     adicionarLogNaTela(`[-] Temperatura descendo: ${camara.getTemperaturaAtual().toFixed(2)}°C`, "blue");
-    sensor(camara);
+    sensor(camara, tempo);
+    tempo++;
   }
 }
 
@@ -31,6 +36,7 @@ export function desligarMotor(camara: Camara): void {
   while (!camara.getMotorLigado()) {
     camara.setTemperaturaAtual(camara.getTemperaturaAtual() + 1.5);
     adicionarLogNaTela(`[+] Temperatura subindo: ${camara.getTemperaturaAtual().toFixed(2)}°C`, "purple");
-    sensor(camara);
+    sensor(camara, tempo);
+    tempo++;
   }
 }

@@ -1,7 +1,13 @@
+interface DadosTemperatura {
+  minuto: number;
+  temperatura: number;
+}
+
 export class Camara {
   private _temperaturaAtual: number;
   private _motorLigado: boolean;
-  private _valoresSimulacao: string[] = []; // Array para armazenar valores da simulação
+  private _dadosTemperatura: DadosTemperatura[] = []; 
+
 
   constructor(temperaturaInicial: number = 10) {
     this._temperaturaAtual = temperaturaInicial;
@@ -24,15 +30,13 @@ export class Camara {
     this._motorLigado = valor;
   }
 
-  public adicionarValorSimulacao(valor: string): void {
-    this._valoresSimulacao.push(valor);
+  public coletarDadosTemperatura(minuto: number, temperatura: number): void {
+    const temperaturaFixada = parseFloat(temperatura.toFixed(2));
+    const novoDado: DadosTemperatura = { minuto, temperatura: temperaturaFixada };
+    this._dadosTemperatura.push(novoDado);
   }
 
-  public getValoresSimulacao(): string[] {
-    return [...this._valoresSimulacao];
-  } 
-
-  public getValoresSimulacaoComoString(): string {
-    return this._valoresSimulacao.join("\n");
+  public obterDadosTemperatura(): DadosTemperatura[] {
+    return this._dadosTemperatura;
   }
 }

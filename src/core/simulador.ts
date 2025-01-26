@@ -7,9 +7,10 @@ export function simularCamara(camara: Camara): void {
   let i = 0;
 
   const intervalo = setInterval(() => {
-    if (i >= 100) {
+    if (i >= 4) {
       clearInterval(intervalo);
       adicionarLogNaTela("Simulação concluída.");
+      console.log(camara.obterDadosTemperatura());
       return;
     }
 
