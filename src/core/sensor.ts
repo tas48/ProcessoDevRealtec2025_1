@@ -1,13 +1,14 @@
-import { Camara } from "./camara";
+import { adicionarLogNaTela } from "../view/ui";
+import { Camara } from "./Camara";
 
 export function sensor(camara: Camara): void {
   const temperaturaAtual = camara.getTemperaturaAtual();
 
   if (camara.getMotorLigado() && temperaturaAtual - 0.8 <= 4) {
-    console.log("Temperatura atingiu o ponto de desligamento ideal.");
+    adicionarLogNaTela("[SENSOR] Temperatura atingiu o ponto de desligamento ideal.", "brown");
     camara.setMotorLigado(false);
   } else if (!camara.getMotorLigado() && temperaturaAtual + 1.5 >= 7.5) {
-    console.log("Temperatura atingiu o ponto de ativação ideal.");
+    adicionarLogNaTela("[SENSOR] Temperatura atingiu o ponto de ativação ideal.", "brown");
     camara.setMotorLigado(true);
   }
 }

@@ -1,14 +1,15 @@
-import { Camara } from "./camara";
+import { Camara } from "./Camara";
 import { ligarMotor, desligarMotor } from "./motor";
+import { adicionarLogNaTela } from "../view/ui";
 
 export function simularCamara(camara: Camara): void {
-  console.log(`Iniciando simulação com temperatura inicial de ${camara.getTemperaturaAtual()}°C.`);
+  adicionarLogNaTela(`Iniciando simulação com temperatura inicial de ${camara.getTemperaturaAtual()}°C.`);
   let i = 0;
 
   const intervalo = setInterval(() => {
     if (i >= 100) {
-      clearInterval(intervalo); // Encerra o intervalo quando o loop atinge o limite
-      console.log("Simulação concluída.");
+      clearInterval(intervalo);
+      adicionarLogNaTela("Simulação concluída.");
       return;
     }
 
@@ -17,7 +18,6 @@ export function simularCamara(camara: Camara): void {
     } else {
       desligarMotor(camara);
     }
-
     i++;
-  }, 1000); // Executa o bloco de código a cada 1 segundo
+  }, 2000); 
 }
