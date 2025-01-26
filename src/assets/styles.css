@@ -1,22 +1,62 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-  }
-  #grafico-container {
-    width: 90%;
-    max-width: 800px;
-    height: 400px;
-  }
-  #motor-status {
-    font-size: 1.2rem;
-    margin-top: 10px;
-  }
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+#logTemperatura {
+  width: 700px;
+  max-width: 90%;
+  height: 300px;
+  overflow-y: auto;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 1.5;
+}
 
-  h1 {
-    text-align: center;
-  }
+#logTemperatura::before {
+  font-weight: bold;
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 10px;
+  display: block;
+}
+
+#logTemperatura p {
+  margin: 5px 0;
+  padding: 5px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#logTemperatura p.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#logTemperatura p.green {
+  color: green;
+}
+
+#logTemperatura p.red {
+  color: red;
+}
+
+#logTemperatura p.blue {
+  color: blue;
+}

@@ -21,3 +21,4 @@ export function simularCamara(camara: Camara): void {
     i++;
   }, 2000); 
 }
+
